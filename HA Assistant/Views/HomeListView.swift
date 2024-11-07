@@ -47,7 +47,7 @@ struct HomeListView: View {
                     HomeEditView(homeStore: homeStore, homeEditModel: homeEditModel)
                 }
             }
-            .navigationTitle("HA助理")
+            .navigationTitle("HA助手")
         }
         .onChange(of: scenePhase) { _, phase in
             if phase == .inactive { saveAction() }
