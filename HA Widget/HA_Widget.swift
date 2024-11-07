@@ -40,6 +40,7 @@ struct Provider: TimelineProvider {
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
+            try? await Task.sleep(for: .seconds(2))
             do{
                 try await homeStore.load()
             } catch {
@@ -119,60 +120,69 @@ struct HA_WidgetEntryView : View {
                 }
             }
             Spacer()
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("温度").font(.system(size: 15)).fontWeight(.light)
-                    HStack(alignment: .bottom) {
-                        if entry.temp_air == nil {
-                            Text("-").bold().monospaced().font(.system(size: 30))
-                        } else {
-                            Text(String(format: "%.1f", entry.temp_air!)).bold().monospaced().font(.system(size: 30))
-                            Text("°C").bold().monospaced().font(.system(size: 15))
-                        }
-                    }
-                }
-                if family == .systemMedium {
+            Grid {
+                GridRow {
                     VStack(alignment: .leading) {
-                        Text("剩余电量").font(.system(size: 15)).fontWeight(.light)
+                        Text("温度").font(.system(size: 15)).fontWeight(.light)
                         HStack(alignment: .bottom) {
-                            if entry.power_left == nil {
+                            if entry.temp_air == nil {
                                 Text("-").bold().monospaced().font(.system(size: 30))
                             } else {
-                                Text(String(format: "%.1f", entry.power_left!)).bold().monospaced().font(.system(size: 30))
-                                Text("kWh").bold().monospaced().font(.system(size: 15))
-                                Spacer()
+                                Text(String(format: "%.1f", entry.temp_air!)).bold().monospaced().font(.system(size: 30))
+                                Text("°C").bold().monospaced().font(.system(size: 15))
                             }
                         }
                     }
-//                    Button(intent: AcSwitchIntent(newState: IntentParameter(title: "cool"))) {
-//                        Text("开启空调")
-//                    }
-                }
-            }
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("湿度").font(.system(size: 15)).fontWeight(.light)
-                    HStack(alignment: .bottom) {
-                        if entry.humidity_air == nil {
-                            Text("-").bold().monospaced().font(.system(size: 30))
-                        } else {
-                            Text(String(format: "%.1f", entry.humidity_air!)).bold().monospaced().font(.system(size: 30))
-                            Text("%").bold().monospaced().font(.system(size: 15))
-                        }
-                    }
-                }
-                if family == .systemMedium {
-                    VStack(alignment: .leading) {
-                        Text("剩余水量").font(.system(size: 15)).fontWeight(.light)
-                        HStack(alignment: .bottom) {
-                            if entry.water_left == nil {
-                                Text("-").bold().monospaced().font(.system(size: 30))
-                            } else {
-                                Text(String(format: "%.1f", entry.water_left!)).bold().monospaced().font(.system(size: 30))
-                                Text("m³").bold().monospaced().font(.system(size: 15))
-                                Spacer()
+                    if family == .systemMedium {
+                        VStack(alignment: .leading) {
+                            Text("剩余电量").font(.system(size: 15)).fontWeight(.light)
+                            HStack(alignment: .bottom) {
+                                if entry.power_left == nil {
+                                    Text("-").bold().monospaced().font(.system(size: 30))
+                                } else {
+                                    Text(String(format: "%.1f", entry.power_left!)).bold().monospaced().font(.system(size: 30))
+                                    Text("kWh").bold().monospaced().font(.system(size: 15))
+                                    Spacer()
+                                }
                             }
                         }
+                        Button(intent: AcSwitchIntent(ifOn: true)) {
+                            Text("开启空调")
+                                .padding(.vertical, 8)
+                        }
+                        .clipShape(ContainerRelativeShape())
+                    }
+                }
+                GridRow {
+                    VStack(alignment: .leading) {
+                        Text("湿度").font(.system(size: 15)).fontWeight(.light)
+                        HStack(alignment: .bottom) {
+                            if entry.humidity_air == nil {
+                                Text("-").bold().monospaced().font(.system(size: 30))
+                            } else {
+                                Text(String(format: "%.1f", entry.humidity_air!)).bold().monospaced().font(.system(size: 30))
+                                Text("%").bold().monospaced().font(.system(size: 15))
+                            }
+                        }
+                    }
+                    if family == .systemMedium {
+                        VStack(alignment: .leading) {
+                            Text("剩余水量").font(.system(size: 15)).fontWeight(.light)
+                            HStack(alignment: .bottom) {
+                                if entry.water_left == nil {
+                                    Text("-").bold().monospaced().font(.system(size: 30))
+                                } else {
+                                    Text(String(format: "%.1f", entry.water_left!)).bold().monospaced().font(.system(size: 30))
+                                    Text("m³").bold().monospaced().font(.system(size: 15))
+                                    Spacer()
+                                }
+                            }
+                        }
+                        Button(intent: AcSwitchIntent(ifOn: false)) {
+                            Text("关闭空调")
+                                .padding(.vertical, 8)
+                        }
+                        .clipShape(ContainerRelativeShape())
                     }
                 }
             }
@@ -182,7 +192,7 @@ struct HA_WidgetEntryView : View {
 
 struct HA_Widget: Widget {
     let kind: String = "HA_Widget"
-
+    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
@@ -196,6 +206,7 @@ struct HA_Widget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 

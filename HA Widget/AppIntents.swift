@@ -8,17 +8,27 @@
 import AppIntents
 
 struct AcSwitchIntent: AppIntent {
-    static var title: LocalizedStringResource = "Ac On"
-    static var description: IntentDescription = IntentDescription("Turn on the AC.")
+    static var title: LocalizedStringResource = "Ac Switch"
+    static var description: IntentDescription = IntentDescription("Switch the state of the AC.")
     
-    @Parameter(title: "newState")
-    var newState: String
+    @Parameter(title: "ifOn")
+    var ifOn: Bool
+    
+    init() {}
+    init(ifOn: Bool) {
+        self.ifOn = ifOn
+    }
     
     func perform() async throws -> some IntentResult {
         let homeStore = HomeStore.shared
         guard let selectedInfo = homeStore.selected else { return .result() }
         let serverURL = selectedInfo.homeData.serverURL
-        let serviceAPI = serverURL.appendingPathComponent("api/services/climate/turn_" + newState)
+        let serviceAPI =
+        if ifOn {
+            serverURL.appendingPathComponent("api/services/climate/turn_on")
+        } else {
+            serverURL.appendingPathComponent("api/services/climate/turn_off")
+        }
         var serviceRequest = URLRequest(url: serviceAPI)
         serviceRequest.httpMethod = "POST"
         let payload: [String: Any] = [
