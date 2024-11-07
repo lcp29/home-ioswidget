@@ -8,16 +8,65 @@
 
 /* Begin PBXBuildFile section */
 		8247755A2CDC8F0400E8439A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 824775592CDC8F0400E8439A /* SwiftyJSON */; };
+		824775632CDC916D00E8439A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824775622CDC916D00E8439A /* WidgetKit.framework */; };
+		824775652CDC916D00E8439A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824775642CDC916D00E8439A /* SwiftUI.framework */; };
+		824775702CDC916F00E8439A /* HA WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 824775602CDC916D00E8439A /* HA WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8247757D2CDC920D00E8439A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 8247757C2CDC920D00E8439A /* SwiftyJSON */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8247756E2CDC916F00E8439A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8247752B2CDC8D4200E8439A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8247755F2CDC916D00E8439A;
+			remoteInfo = "HA WidgetExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		824775752CDC916F00E8439A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				824775702CDC916F00E8439A /* HA WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		824775332CDC8D4200E8439A /* HA Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HA Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		824775602CDC916D00E8439A /* HA WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "HA WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		824775622CDC916D00E8439A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		824775642CDC916D00E8439A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		824775712CDC916F00E8439A /* Exceptions for "HA Widget" folder in "HA WidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8247755F2CDC916D00E8439A /* HA WidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		824775352CDC8D4200E8439A /* HA Assistant */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "HA Assistant";
+			sourceTree = "<group>";
+		};
+		824775662CDC916D00E8439A /* HA Widget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				824775712CDC916F00E8439A /* Exceptions for "HA Widget" folder in "HA WidgetExtension" target */,
+			);
+			path = "HA Widget";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -31,6 +80,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8247755D2CDC916D00E8439A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8247757D2CDC920D00E8439A /* SwiftyJSON in Frameworks */,
+				824775652CDC916D00E8439A /* SwiftUI.framework in Frameworks */,
+				824775632CDC916D00E8439A /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -38,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				824775352CDC8D4200E8439A /* HA Assistant */,
+				824775662CDC916D00E8439A /* HA Widget */,
+				824775612CDC916D00E8439A /* Frameworks */,
 				824775342CDC8D4200E8439A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,8 +107,18 @@
 			isa = PBXGroup;
 			children = (
 				824775332CDC8D4200E8439A /* HA Assistant.app */,
+				824775602CDC916D00E8439A /* HA WidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		824775612CDC916D00E8439A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				824775622CDC916D00E8439A /* WidgetKit.framework */,
+				824775642CDC916D00E8439A /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,10 +131,12 @@
 				8247752F2CDC8D4200E8439A /* Sources */,
 				824775302CDC8D4200E8439A /* Frameworks */,
 				824775312CDC8D4200E8439A /* Resources */,
+				824775752CDC916F00E8439A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8247756F2CDC916F00E8439A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				824775352CDC8D4200E8439A /* HA Assistant */,
@@ -76,6 +149,29 @@
 			productReference = 824775332CDC8D4200E8439A /* HA Assistant.app */;
 			productType = "com.apple.product-type.application";
 		};
+		8247755F2CDC916D00E8439A /* HA WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 824775722CDC916F00E8439A /* Build configuration list for PBXNativeTarget "HA WidgetExtension" */;
+			buildPhases = (
+				8247755C2CDC916D00E8439A /* Sources */,
+				8247755D2CDC916D00E8439A /* Frameworks */,
+				8247755E2CDC916D00E8439A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				824775662CDC916D00E8439A /* HA Widget */,
+			);
+			name = "HA WidgetExtension";
+			packageProductDependencies = (
+				8247757C2CDC920D00E8439A /* SwiftyJSON */,
+			);
+			productName = "HA WidgetExtension";
+			productReference = 824775602CDC916D00E8439A /* HA WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -87,6 +183,9 @@
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					824775322CDC8D4200E8439A = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					8247755F2CDC916D00E8439A = {
 						CreatedOnToolsVersion = 16.0;
 					};
 				};
@@ -109,12 +208,20 @@
 			projectRoot = "";
 			targets = (
 				824775322CDC8D4200E8439A /* HA Assistant */,
+				8247755F2CDC916D00E8439A /* HA WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		824775312CDC8D4200E8439A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8247755E2CDC916D00E8439A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -131,7 +238,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8247755C2CDC916D00E8439A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8247756F2CDC916F00E8439A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8247755F2CDC916D00E8439A /* HA WidgetExtension */;
+			targetProxy = 8247756E2CDC916F00E8439A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8247753F2CDC8D4300E8439A /* Debug */ = {
@@ -315,6 +437,62 @@
 			};
 			name = Release;
 		};
+		824775732CDC916F00E8439A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "HA Widget/HA WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 452A6492NX;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "HA Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "HA Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "helmholtz.HA-Assistant.HA-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		824775742CDC916F00E8439A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "HA Widget/HA WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 452A6492NX;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "HA Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "HA Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "helmholtz.HA-Assistant.HA-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -336,6 +514,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		824775722CDC916F00E8439A /* Build configuration list for PBXNativeTarget "HA WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				824775732CDC916F00E8439A /* Debug */,
+				824775742CDC916F00E8439A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -351,6 +538,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		824775592CDC8F0400E8439A /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 824775582CDC8F0400E8439A /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		8247757C2CDC920D00E8439A /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 824775582CDC8F0400E8439A /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
