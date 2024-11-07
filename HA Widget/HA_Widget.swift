@@ -120,7 +120,7 @@ struct HA_WidgetEntryView : View {
                 }
             }
             Spacer()
-            Grid {
+            Grid(alignment: .bottomLeading) {
                 GridRow {
                     VStack(alignment: .leading) {
                         Text("温度").font(.system(size: 15)).fontWeight(.light)
@@ -151,6 +151,7 @@ struct HA_WidgetEntryView : View {
                                 .padding(.vertical, 8)
                         }
                         .clipShape(ContainerRelativeShape())
+                        .gridColumnAlignment(.center)
                     }
                 }
                 GridRow {
@@ -183,6 +184,7 @@ struct HA_WidgetEntryView : View {
                                 .padding(.vertical, 8)
                         }
                         .clipShape(ContainerRelativeShape())
+                        .gridColumnAlignment(.center)
                     }
                 }
             }
