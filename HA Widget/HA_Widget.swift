@@ -217,8 +217,8 @@ struct HA_Widget: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("基本信息")
+        .description("显示家庭的基本信息，中号组件提供空调控制功能。")
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
