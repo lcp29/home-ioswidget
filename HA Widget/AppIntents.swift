@@ -7,6 +7,14 @@
 
 import AppIntents
 
+struct EmptyIntent: AppIntent {
+    static var title: LocalizedStringResource = "Empty Intent"
+    static var description: IntentDescription = IntentDescription("A intent that does nothing.")
+    func perform() async throws -> some IntentResult {
+        return .result()
+    }
+}
+
 struct AcSwitchIntent: AppIntent {
     static var title: LocalizedStringResource = "Ac Switch"
     static var description: IntentDescription = IntentDescription("Switch the state of the AC.")

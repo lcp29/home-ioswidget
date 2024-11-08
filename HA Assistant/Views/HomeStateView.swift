@@ -20,7 +20,7 @@ struct HomeStateView: View {
                 homeStateModel.refresh()
             }) {
                 HStack {
-                    Image(systemName: "arrow.trianglehead.clockwise")
+                    Image(systemName: "arrow.clockwise")
                     Text("刷新当前家庭")
                     if homeStateModel.updating {
                         Spacer()

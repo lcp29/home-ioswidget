@@ -107,7 +107,18 @@ struct HA_WidgetEntryView : View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(entry.name).font(.system(size: 20))
+                if family == .systemSmall {
+                    Button(intent: EmptyIntent()) {
+                        Text(entry.name).font(.system(size: 20))
+                    }.buttonStyle(.plain)
+                } else { // medium
+                    Text(entry.name).font(.system(size: 20))
+                    Button(intent: EmptyIntent()) {
+                        Image(systemName: "arrow.clockwise")
+                            .foregroundStyle(.secondary)
+                            .font(.system(size: 14))
+                    }.buttonStyle(.plain)
+                }
                 Spacer()
                 Text("AC").font(.system(size: 20))
                 Spacer().frame(width: 5)
@@ -129,7 +140,7 @@ struct HA_WidgetEntryView : View {
                                 Text("-").bold().monospaced().font(.system(size: 30))
                             } else {
                                 Text(String(format: "%.1f", entry.temp_air!)).bold().monospaced().font(.system(size: 30))
-                                Text("°C").bold().monospaced().font(.system(size: 15))
+                                Text("°C").bold().monospaced().font(.system(size: 15)).padding(.bottom, 4).padding(.leading, -5)
                             }
                         }
                     }
@@ -141,7 +152,7 @@ struct HA_WidgetEntryView : View {
                                     Text("-").bold().monospaced().font(.system(size: 30))
                                 } else {
                                     Text(String(format: "%.1f", entry.power_left!)).bold().monospaced().font(.system(size: 30))
-                                    Text("kWh").bold().monospaced().font(.system(size: 15))
+                                    Text("kWh").bold().monospaced().font(.system(size: 15)).padding(.bottom, 4).padding(.leading, -5)
                                     Spacer()
                                 }
                             }
@@ -162,7 +173,7 @@ struct HA_WidgetEntryView : View {
                                 Text("-").bold().monospaced().font(.system(size: 30))
                             } else {
                                 Text(String(format: "%.1f", entry.humidity_air!)).bold().monospaced().font(.system(size: 30))
-                                Text("%").bold().monospaced().font(.system(size: 15))
+                                Text("%").bold().monospaced().font(.system(size: 15)).padding(.bottom, 4).padding(.leading, -5)
                             }
                         }
                     }
@@ -174,7 +185,7 @@ struct HA_WidgetEntryView : View {
                                     Text("-").bold().monospaced().font(.system(size: 30))
                                 } else {
                                     Text(String(format: "%.1f", entry.water_left!)).bold().monospaced().font(.system(size: 30))
-                                    Text("m³").bold().monospaced().font(.system(size: 15))
+                                    Text("m³").bold().monospaced().font(.system(size: 15)).padding(.bottom, 4).padding(.leading, -5)
                                     Spacer()
                                 }
                             }
